@@ -1,0 +1,61 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #e7e5e5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #2e2e2e;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #a5a6a8;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #f9f9f9;
+}
+
+button {
+  border-radius: 8px;
+  border: 0px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  /* background-color: #1a1a1a; */
+  cursor: pointer;
+  transition: border-color 0.25s;
+  outline: none; /* Removes the focus outline */
+  border: none;  /* Removes any border */
+}
+button:hover {
+  border-color: #0aaefa;
+}
+button:focus{
+  outline: 2px solid #8bcbfc;
+}
+
+select{
+  outline: none; /* Removes the focus outline */
+  border: none;  /* Removes any border */
+}
+select:focus{
+  outline: 2px solid #a4d5fa;
+}

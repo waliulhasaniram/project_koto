@@ -1,0 +1,67 @@
+productName: onion
+productMeasurement: kg
+productType: vegitables
+
+price[dhaka_division_price][currentMinPrice]: 40
+price[dhaka_division_price][currentMaxPrice]: 50
+price[dhaka_division_price][lastWeekMinPrice]: 50
+price[dhaka_division_price][lastWeekMaxPrice]: 55
+price[dhaka_division_price][lastMonthMinPrice]: 60
+price[dhaka_division_price][lastMonthMaxPrice]: 62
+price[dhaka_division_price][lastYearPrice]: 80
+
+price[rajshahi_division_price][currentMinPrice]: 40
+price[rajshahi_division_price][currentMaxPrice]: 50
+price[rajshahi_division_price][lastWeekMinPrice]: 50
+price[rajshahi_division_price][lastWeekMaxPrice]: 55
+price[rajshahi_division_price][lastMonthMinPrice]: 60
+price[rajshahi_division_price][lastMonthMaxPrice]: 62
+price[rajshahi_division_price][lastYearPrice]: 80
+
+price[khulna_division_price][currentMinPrice]: 40
+price[khulna_division_price][currentMaxPrice]: 50
+price[khulna_division_price][lastWeekMinPrice]: 50
+price[khulna_division_price][lastWeekMaxPrice]: 55
+price[khulna_division_price][lastMonthMinPrice]: 60
+price[khulna_division_price][lastMonthMaxPrice]: 62
+price[khulna_division_price][lastYearPrice]: 80
+
+price[barishal_division_price][currentMinPrice]: 40
+price[barishal_division_price][currentMaxPrice]: 50
+price[barishal_division_price][lastWeekMinPrice]: 50
+price[barishal_division_price][lastWeekMaxPrice]: 55
+price[barishal_division_price][lastMonthMinPrice]: 60
+price[barishal_division_price][lastMonthMaxPrice]: 62
+price[barishal_division_price][lastYearPrice]: 80
+
+price[chottogram_division_price][currentMinPrice]: 40
+price[chottogram_division_price][currentMaxPrice]: 50
+price[chottogram_division_price][lastWeekMinPrice]: 50
+price[chottogram_division_price][lastWeekMaxPrice]: 55
+price[chottogram_division_price][lastMonthMinPrice]: 60
+price[chottogram_division_price][lastMonthMaxPrice]: 62
+price[chottogram_division_price][lastYearPrice]: 80
+
+price[sylhet_division_price][currentMinPrice]: 40
+price[sylhet_division_price][currentMaxPrice]: 50
+price[sylhet_division_price][lastWeekMinPrice]: 50
+price[sylhet_division_price][lastWeekMaxPrice]: 55
+price[sylhet_division_price][lastMonthMinPrice]: 60
+price[sylhet_division_price][lastMonthMaxPrice]: 62
+price[sylhet_division_price][lastYearPrice]: 80
+
+price[mymensingh_division_price][currentMinPrice]: 40
+price[mymensingh_division_price][currentMaxPrice]: 50
+price[mymensingh_division_price][lastWeekMinPrice]: 50
+price[mymensingh_division_price][lastWeekMaxPrice]: 55
+price[mymensingh_division_price][lastMonthMinPrice]: 60
+price[mymensingh_division_price][lastMonthMaxPrice]: 62
+price[mymensingh_division_price][lastYearPrice]: 80
+
+price[rangpur_division_price][currentMinPrice]: 40
+price[rangpur_division_price][currentMaxPrice]: 50
+price[rangpur_division_price][lastWeekMinPrice]: 50
+price[rangpur_division_price][lastWeekMaxPrice]: 55
+price[rangpur_division_price][lastMonthMinPrice]: 60
+price[rangpur_division_price][lastMonthMaxPrice]: 62
+price[rangpur_division_price][lastYearPrice]: 80

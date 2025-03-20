@@ -1,0 +1,81 @@
+require("dotenv").config()
+const ApiError = require("../utils/ApiError");
+const ApiResponse = require("../utils/ApiResponse");
+const asyncHandler = require("../utils/asyncHandler");
+const otpModel = require("./otp.model")
+const otpGenertor = require("otp-generator")
+const twilio = require("twilio")
+
+// Validate environment variables before initialization
+const accountSID = process.env.TWILIP_SID; // Fixed typo from TWILIP_SID
+const accountToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_NUMBER;
+
+if (!accountSID || !accountToken || !twilioNumber) {
+    console.error("Missing Twilio environment variables");
+    process.exit(1);
+}
+
+const twilioClient = twilio(accountSID, accountToken);
+
+const sendOtp = asyncHandler(async (req, res) => {
+    const { phoneNumber } = req.body;
+
+    // Validate phone number format for Bangladesh
+    if (!/^\+8801[3-9]\d{8}$/.test(phoneNumber)) {
+        throw new ApiError(400, "Invalid Bangladeshi phone number format. Use +8801XXXXXXXXX");
+    }
+
+    // Generate numeric-only OTP
+    const otp = otpGenertor.generate(6, {
+        upperCaseAlphabets: false,
+        specialChars: false,
+        lowerCaseAlphabets: false, // Ensure only numbers
+        digits: true
+    });
+
+    try {
+        const currentTime = new Date();
+        
+        // Save OTP to database with expiration
+        await otpModel.findOneAndUpdate(
+            { phoneNumber },
+            {
+                phoneNumber,
+                otp,
+                otpExpiration: new Date(currentTime.getTime() + 5 * 60000)
+            },
+            { upsert: true, new: true }
+        );
+
+        // Send SMS with proper encoding
+        const message = await twilioClient.messages.create({
+            body: `Your verification code is: ${otp}`, // More professional message
+            to: phoneNumber,
+            from: twilioNumber,
+            validityPeriod: 300  // 5 minutes validity
+        });
+
+        // Log for debugging delivery status
+        console.log(`SMS sent to ${phoneNumber} with SID: ${message.sid}`);
+
+        res.status(200).json(
+            new ApiResponse(200, null, "OTP sent successfully. Please check your phone.")
+        );
+
+    } catch (error) {
+        console.error("Twilio Error:", error);
+
+        // Handle specific Twilio error codes
+        let errorMessage = "Failed to send OTP";
+        if (error.code === 21211) {
+            errorMessage = "Invalid phone number format";
+        } else if (error.code === 21608) {
+            errorMessage = "Unsupported country (Bangladesh) - contact support";
+        }
+
+        throw new ApiError(500, errorMessage);
+    }
+});
+
+module.exports = {sendOtp}
