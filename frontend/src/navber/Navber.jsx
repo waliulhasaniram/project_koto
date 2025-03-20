@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import styled from 'styled-components';
 import { GiHamburgerMenu } from "react-icons/gi";
 
+
 const Navber = () => {
   const {IsLoggedIn, loggedInUser} = useAuth()
 
@@ -15,7 +16,7 @@ const Navber = () => {
   return (
     <Wraper>
     <nav className="nav-container">
-      <div><NavLink to="/"><img src="/public/koto.png" alt="koto logo" width={170}/></NavLink></div>
+      <div><NavLink to="/"><img src="/Koto.png" alt="koto logo" width={170}/></NavLink></div>
       
 
       <div className='menubar'>
