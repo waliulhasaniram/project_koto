@@ -32,6 +32,10 @@ app.use("/api/c", routerContact);
 
 app.use(errorMiddleWare);
 
+app.get("/", (req, res)=>{
+  res.send("hello api")
+})
+
 // Connect DB and export  for vercel
 // connecrDB()
 //   .then(() => console.log("Database connected!"))
