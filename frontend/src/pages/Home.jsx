@@ -251,28 +251,29 @@ const TypeSlider = styled.section`
     content: '→';
     font-size: x-large;
     }
-  @media only screen and (max-width: 600px) {
-    width: 300px;
+    @media only screen and (max-width: 600px) {
+    width: 330px;
     border-radius: 10px;
     .items{
-      width: 250px;
+      width: 200px;
       border-radius: 20px;
       button{
             background-color: #fff;
             color: #6d6a6a;
-            width: 140px;
+            width: 105px;
             height: 40px;
             border-radius: 15x;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 12.5px;
             .icon{
-              font-size: 23px;
+              font-size: 15px;
               margin-right: 3px;
             }
         }
     }
-  }   
+  } 
 
 `
 const Searchbar = styled.section`
