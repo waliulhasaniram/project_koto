@@ -41,7 +41,7 @@ const Home =()=>{
       infinite: false,
       speed: 500,
       slidesToScroll: 1,
-      slidesToShow: 2
+      slidesToShow: 3
     };
 
 ///////////////////////------------////------------////////////////// search product
