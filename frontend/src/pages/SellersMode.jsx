@@ -139,6 +139,8 @@ const Wraper = styled.section`
 
 @media only screen and (max-width: 600px) {
   margin-top: 30px;
+  width: 200px;
+  font-size: small;
 }
 `;
 

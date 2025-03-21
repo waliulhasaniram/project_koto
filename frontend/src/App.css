@@ -105,5 +105,23 @@ transform: scale(1.1);
     align-items: center;
     padding: 20px;
   }
+  .select{
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    width: 100px;
+    height: 66px;
+  }
+  .card{
+    width: 280px;
+    height: 230px;
+    h2{
+      font-size: 25px;
+    }
+  }
+  .card img {
+    width: 280px;
+    height: 150px;
+  }
 }
 /* product card end */

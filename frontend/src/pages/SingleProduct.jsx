@@ -19,7 +19,7 @@ const SingleProduct = () => {
             <meta name="keywords" content={`koto, SEO, grocery items, grocery items prices, vegetable s prices, grocery items price differents, price of ${productName}`} />
         </Helmet>
 
-        <NavLink to="/"><button>← go back</button></NavLink> 
+        <NavLink to="/"><button className="goback">← go back</button></NavLink> 
         <ProductCard>
             <ProductImage src={porductAvater} alt={productName} />
             <ProductDetails>
@@ -64,59 +64,81 @@ const Wrapper = styled.section`
     button{
         margin: 5px;
     }
+    @media only screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 310px;
+    }
 `;
 
 const ProductCard = styled.div`
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 40px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    @media (min-width: 768px) {
-        flex-direction: row;
-        padding: 50px;
+    @media only screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
     }
 `;
 
 const ProductImage = styled.img`
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
-    @media (min-width: 768px) {
+    
+    @media only screen and (max-width: 768px) {
         margin-right: 30px;
         margin-bottom: 0;
     }
 `;
 
 const ProductDetails = styled.div`
-    text-align: center;
-    @media (min-width: 768px) {
-        text-align: left;
-    }
+    text-align: start;
+    padding: 30px;
 
     h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
         margin-bottom: 15px;
         color: #333;
     }
 
     h3 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin-bottom: 10px;
         color: #555;
     }
 
     p {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
         margin-top: 10px;
         color: #666;
+    }
+    @media only screen and (max-width: 768px) {
+        text-align: start;
+        padding: 10px;
+        h1 {
+            font-size: 2rem;
+        }
+        h2{
+            font-size: 1.5rem;
+        }
+        p{
+            font-size: 1.2rem;
+        }
+
     }
 `;
 

@@ -190,7 +190,28 @@ const Wraper = styled.section`
 
   @media only screen and (max-width: 600px) {
     .maincontainer{
-      width: 100%;
+      width: 96%;
+    }
+    #bottone1 {
+      width: 150px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 7px;
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    .maincontainer{
+      width: 96%;
+    }
+    #bottone1 {
+      width: 150px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 7px;
     }
   }
   
@@ -231,7 +252,26 @@ const TypeSlider = styled.section`
     font-size: x-large;
     }
   @media only screen and (max-width: 600px) {
-    width: 350px;
+    width: 300px;
+    border-radius: 10px;
+    .items{
+      width: 250px;
+      border-radius: 20px;
+      button{
+            background-color: #fff;
+            color: #6d6a6a;
+            width: 140px;
+            height: 40px;
+            border-radius: 15x;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .icon{
+              font-size: 23px;
+              margin-right: 3px;
+            }
+        }
+    }
   }   
 
 `
@@ -318,10 +358,11 @@ const Searchbar = styled.section`
 
   @media only screen and (max-width: 600px) {
     .Scontainer{
-      max-width: 200px;
+      max-width: 180px;
+      font-size: medium;
     }
     .search-Scontainer{
-      width: 200px;
+      width: 180px;
     }
   }
 
