@@ -164,10 +164,125 @@ const GetSearchProduct = asyncHandler(async(req, res)=>{
 
 })
 
+const GetAllProduct_A_Z = asyncHandler(async (req, res) => {
+    const { division } = req.query;
+
+    // Check if division is provided
+    if (!division) {
+        return res.status(400).json(new ApiResponse(400, null, "Division is required"));
+    }
+
+    const fieldPath = `price.${division}`;
+
+    // Build query object
+    const query = {
+        [fieldPath]: { $exists: true }
+    };
+
+    // Build projection to include required fields
+    const projection = {
+        productName: 1,
+        productType: 1,
+        [fieldPath]: 1,
+        porductAvater: 1
+    };
+
+    const filtered_data = await Product.find(query, projection).collation({ locale: 'en', strength: 2 }).sort({productName: 1});
+
+    res.status(200).json(new ApiResponse(200, filtered_data, "A-Z filtered data by division and product name"));
+
+})
+
+const GetAllProduct_Z_A = asyncHandler(async (req, res) => {
+    const { division } = req.query;
+
+    // Check if division is provided
+    if (!division) {
+        return res.status(400).json(new ApiResponse(400, null, "Division is required"));
+    }
+
+    const fieldPath = `price.${division}`;
+
+    // Build query object
+    const query = {
+        [fieldPath]: { $exists: true }
+    };
+
+    // Build projection to include required fields
+    const projection = {
+        productName: 1,
+        productType: 1,
+        [fieldPath]: 1,
+        porductAvater: 1
+    };
+
+    const filtered_data = await Product.find(query, projection).collation({ locale: 'en', strength: 2 }).sort({productName: -1});
+
+    res.status(200).json(new ApiResponse(200, filtered_data, "A-Z filtered data by division and product name"));
+})
+
+const GetAllProduct_LOW_HIGH = asyncHandler(async (req, res) => {
+    const { division } = req.query;
+
+    // Check if division is provided
+    if (!division) {
+        return res.status(400).json(new ApiResponse(400, null, "Division is required"));
+    }
+
+    const fieldPath = `price.${division}`;
+
+    // Build query object
+    const query = {
+        [fieldPath]: { $exists: true }
+    };
+
+    // Build projection to include required fields
+    const projection = {
+        productName: 1,
+        productType: 1,
+        [fieldPath]: 1,
+        porductAvater: 1
+    };
+
+    const filtered_data = await Product.find(query, projection).collation({ locale: 'en', strength: 2 }).sort({ [fieldPath]: 1});
+
+    res.status(200).json(new ApiResponse(200, filtered_data, "low-high filtered data by division and product name"));
+})
+
+const GetAllProduct_HIGH_LOW = asyncHandler(async (req, res) => {
+    const { division } = req.query;
+
+    // Check if division is provided
+    if (!division) {
+        return res.status(400).json(new ApiResponse(400, null, "Division is required"));
+    }
+
+    const fieldPath = `price.${division}`;
+
+    // Build query object
+    const query = {
+        [fieldPath]: { $exists: true }
+    };
+
+    // Build projection to include required fields
+    const projection = {
+        productName: 1,
+        productType: 1,
+        [fieldPath]: 1,
+        porductAvater: 1
+    };
+
+    const filtered_data = await Product.find(query, projection).collation({ locale: 'en', strength: 2 }).sort({ [fieldPath]: -1});
+
+    res.status(200).json(new ApiResponse(200, filtered_data, "high-low filtered data by division and product name"));
+})
+
 const deleteProduct = asyncHandler(async (req, res) => {
     const id = req.params.id
     await Product.deleteOne({_id:id})
     res.status(200).json(new ApiResponse(200, {}, "product deleted"))
 })
 
-module.exports = {Home, PostProduct, GetAllProducts, GetAllProductByDivisionAndType, GetOnlyProductByType, GetSearchProduct, deleteProduct}
+module.exports = {Home, PostProduct, GetAllProducts, GetAllProductByDivisionAndType, GetOnlyProductByType, GetSearchProduct, deleteProduct,
+    GetAllProduct_A_Z, GetAllProduct_Z_A, GetAllProduct_LOW_HIGH, GetAllProduct_HIGH_LOW
+}
