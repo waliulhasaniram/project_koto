@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router";
 import styled from "styled-components";
-import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
+import { FaSortAmountDown } from "react-icons/fa";
+import { FaArrowUpWideShort } from "react-icons/fa6";
 import {Helmet} from "react-helmet-async";
 
 const SingleProduct = () => {
@@ -21,7 +22,7 @@ const SingleProduct = () => {
 
         <NavLink to="/"><button className="goback">← go back</button></NavLink> 
         <ProductCard>
-            <ProductImage src={porductAvater} alt={productName} />
+            <ProductImage src={porductAvater} alt={productName} loading="lazy"/>
             <ProductDetails>
                 <h1>{productName}</h1>
                 <h3>Type: {productType}</h3>
@@ -34,11 +35,11 @@ const SingleProduct = () => {
                         
                     return (
                         <div key={divisionKey} className="price-section">
-                            <h4>{divisionName}</h4>
+                            <h4>{divisionName} </h4>
                             <p>
                                 <strong>Current Price Range:</strong> 
                                 ৳{divisionPrice.currentMinPrice} - ৳{divisionPrice.currentMaxPrice}
-                                {divisionPrice.currentMaxPrice>divisionPrice.lastWeekMaxPrice ? <><FaLongArrowAltUp style={{color:"red"}}/></> : <><FaLongArrowAltDown style={{color:"green"}}/></>}
+                                {divisionPrice.currentMaxPrice>divisionPrice.lastWeekMaxPrice ? <><FaArrowUpWideShort style={{color:"red"}}/></> : <><FaSortAmountDown style={{color:"green"}}/></>}
                             </p>
                             
                             <p>Last Week Price Range: ৳{divisionPrice.lastWeekMinPrice} - ৳{divisionPrice.lastWeekMaxPrice}</p>
