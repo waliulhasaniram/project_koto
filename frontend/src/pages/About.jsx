@@ -56,6 +56,7 @@ const Wrapper = styled.section`
   background-color: aliceblue;
   border-radius: 30px;
   margin-top: 40px;
+  margin-bottom: 40px;
   h1 {
     text-align: center;
     margin-bottom: 2rem;
