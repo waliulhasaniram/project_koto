@@ -42,8 +42,8 @@ const Home =()=>{
       dots: false,
     infinite: false,
     speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 3,
+    slidesToShow: 7,
+    slidesToScroll: 2,
     responsive: [
         {
             breakpoint: 768,
