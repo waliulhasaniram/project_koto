@@ -11,7 +11,8 @@ export const AuthProvider =({children}) => {
     const [productDate, setProductData] = useState();
     const [allProductTypes, setallProductTypes] = useState();
 
-    const [searchProduct, setSearchProduct] = useState();
+    // const [searchProduct, setSearchProduct] = useState();
+    const [sortOrder, setSortOrder] = useState('A-Z');
 
     const [accessToken, setAccessToken] = useState(Cookies.get("accessToken"));
     const [loggedInUser, setLoggedInUser] = useState();
@@ -87,11 +88,49 @@ export const AuthProvider =({children}) => {
         }
     }
 
+    const handleSortChange = async (order, division) => {
+        try {
+            setIsLoading(true);
+            
+            let endpoint = '';
+            switch(order) {
+            case 'A-Z':
+                endpoint = 'a_z';
+                break;
+            case 'Z-A':
+                endpoint = 'z_a';
+                break;
+            case 'Low-High':
+                endpoint = 'low_high';
+                break;
+            case 'High-Low':
+                endpoint = 'high_low';
+                break;
+            default:
+                endpoint = 'a_z';
+            }
+
+            const response = await axios.get(`${URI}/p/${endpoint}?${division ? `division=${division}_division_price` : `division=dhaka_division_price`}`);
+            
+            if(response.status === 200) {
+            console.log(response.data.data)
+            setProductData(response.data.data);
+            setSortOrder(order); // Update sort order state
+            setIsLoading(false);
+            }
+        } catch (error) {
+            console.error('Sorting error:', error);
+        } 
+    }
+
+    useEffect(() => {
+        handleSortChange();
+      }, []);
+
     useEffect(()=>{
-        getProductData('')
-        getUserData()
-        getProductType()
-        
+        getProductData('');
+        getUserData();
+        getProductType();
     },[])
 
     const logoutUser =async()=>{
@@ -111,8 +150,9 @@ export const AuthProvider =({children}) => {
         }
     }
 
-    return <AuthContaxt.Provider value={{productDate, allProductTypes, URI, IsLoggedIn, loggedInUser, authorizationToken, getProductData, storeAccessToken, logoutUser, getSearchedProduct}}>
-        {children}</AuthContaxt.Provider>
+    return <AuthContaxt.Provider value={{productDate, allProductTypes, URI, IsLoggedIn, loggedInUser, authorizationToken, getProductData, storeAccessToken, logoutUser, getSearchedProduct,
+        handleSortChange, sortOrder
+    }}>{children}</AuthContaxt.Provider>
 }
 
 export const useAuth =()=>{
