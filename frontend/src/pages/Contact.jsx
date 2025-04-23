@@ -129,6 +129,7 @@ const Wrapper = styled.section`
   background-color: aliceblue;
   border-radius: 30px;
   margin-top: 40px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
   h1 {
